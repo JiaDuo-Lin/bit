@@ -1,4 +1,4 @@
-module m_thor
+module github.com/Kydaa/bit/service/m_thor
 
 go 1.14
 
