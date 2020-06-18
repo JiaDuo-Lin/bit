@@ -1,3 +1,9 @@
+/*
+	鉴权主体
+	author：Kyda
+	date:06.18.2020
+*/
+
 package model
 
 import (
@@ -19,6 +25,7 @@ func ParseToken(tokenStr string) (token *jwt.Token, err error) {
 	return
 }
 
+// CheckToken 生成Token
 func CheckToken(tokenStr string) bool {
 	token, err := ParseToken(tokenStr)
 	// 过期、无法识别等其他错误

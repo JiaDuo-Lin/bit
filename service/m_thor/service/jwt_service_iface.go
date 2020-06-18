@@ -1,3 +1,9 @@
+/*
+	鉴权微服务借口
+	author：Kyda
+	date:06.18.2020
+*/
+
 package service
 
 import (

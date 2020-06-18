@@ -1,3 +1,9 @@
+/*
+	鉴权微服务
+	author：Kyda
+	date:06.18.2020
+*/
+
 package service
 
 import (
@@ -12,6 +18,7 @@ func NewJWTService() *JWTService {
 	return &JWTService{}
 }
 
+// Token
 func (j *JWTService) Token(ctx context.Context,
 	req *pb.TokenRequest) (*pb.TokenResponse, error) {
 

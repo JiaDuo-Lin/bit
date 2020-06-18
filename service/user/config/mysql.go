@@ -1,5 +1,12 @@
+/*
+	加载配置
+	author：Kyda
+	date:06.18.2020
+*/
+
 package config
 
+// DbConfig
 type DbConfig struct {
 	DriverName string
 	Dsn string
