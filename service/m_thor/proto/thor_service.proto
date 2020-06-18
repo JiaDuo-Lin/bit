@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package thor;
+
+option go_package = ".;proto";
+
+service Service {
+    rpc Token(TokenRequest) returns (TokenResponse){};
+}
+
+message TokenRequest{
+    string token=1;
+}
+message TokenResponse{
+    bool statusCode=1;
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = ".;proto";
+
+service Service {
+    rpc Register(RegisterRequest) returns (RegisterResponse){}; // 注册微服务
+    rpc Login(LoginRequest) returns (LoginResponse){} // 登录微服务
+}
+
+message User {
+    int64 id=1;
+    string name=2;
+    repeated string tags=3;
+}
+
+message RegisterRequest {
+    User user=1;
+}
+
+message RegisterResponse{
+    bool statusCode=1;
+}
+
+
+message LoginRequest{
+    int64 id=1;
+}
+
+message LoginResponse{
+    User user=1;
+    string token=2;
+    bool statusCode=3;
+}
