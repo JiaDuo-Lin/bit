@@ -2,8 +2,8 @@ package service
 
 import (
 	"github.com/pkg/errors"
-	"user/model"
-	pb "user/proto"
+	"github.com/Kydaa/bit/service/user/model"
+	pb "github.com/Kydaa/bit/service/user/proto"
 )
 import (
 	"context"

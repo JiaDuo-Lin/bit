@@ -2,8 +2,8 @@ package server
 
 import (
 	"log"
-	pb "user/proto"
-	"user/service"
+	pb "github.com/Kydaa/bit/service/user/proto"
+	"github.com/Kydaa/bit/service/user/service"
 )
 import "context"
 

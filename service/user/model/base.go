@@ -3,7 +3,7 @@ package model
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"user/config"
+	"github.com/Kydaa/bit/service/user/config"
 )
 
 var db *gorm.DB

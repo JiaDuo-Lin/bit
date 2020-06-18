@@ -1,4 +1,4 @@
-module user
+module  github.com/Kydaa/bit/service/user
 
 go 1.14
 

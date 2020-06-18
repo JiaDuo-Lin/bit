@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"log"
 	pb "github.com/Kydaa/bit/service/m_thor/proto"
+	"log"
 
 	"google.golang.org/grpc"
 )
@@ -22,11 +22,13 @@ func main() {
 
 	defer conn.Close()
 	// 新建客户端
-	c := pb.NewDemoServiceClient(conn)
+	c := pb.NewServiceClient(conn)
+
+	testToken := "sajhgdshjkadkjaasdas"
 	// 进行远程调用
-	r, err := c.HelloDemo(context.TODO(), &pb.Request{Ping: "client grpc ping"})
+	r, err := c.Token(context.TODO(), &pb.TokenRequest{Token:testToken})
 	if err != nil {
 		log.Fatalf("cant call remote grpc with err[%v]", err)
 	}
-	log.Printf("Hello You (%s),(%v)", r.GetPong(), r.GetInrsp())
+	log.Printf("Token result ", r.StatusCode)
 }

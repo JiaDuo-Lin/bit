@@ -1,6 +1,6 @@
 package service
 
-import pb "user/proto"
+import pb "github.com/Kydaa/bit/service/user/proto"
 import (
 	"context"
 )
