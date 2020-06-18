@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	pb "demo/proto"
+	pb "github.com/Kydaa/bit/service/user/proto"
 	"github.com/pkg/errors"
 	"testing"
 )

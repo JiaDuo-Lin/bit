@@ -2,11 +2,11 @@
 package main
 
 import (
+	pb "github.com/Kydaa/bit/service/user/proto"
+	"github.com/Kydaa/bit/service/user/server"
 	"google.golang.org/grpc"
 	"log"
 	"net"
-	pb "github.com/Kydaa/bit/service/user/proto"
-	"github.com/Kydaa/bit/service/user/server"
 )
 
 const (

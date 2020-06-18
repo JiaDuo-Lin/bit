@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/pkg/errors"
 	"github.com/Kydaa/bit/service/user/model"
 	pb "github.com/Kydaa/bit/service/user/proto"
+	"github.com/pkg/errors"
 )
 import (
 	"context"
@@ -29,8 +29,8 @@ func (us *UserService) Login(ctx context.Context,
 
 	if req.Id == 12345 {
 		userResp := &pb.User{Name: "Mike", Id: 12345, Tags: []string{"数据结构", "后端"}}
-		token := "testToken"
-		resp = &pb.LoginResponse{StatusCode: true, User: userResp, Token: token}
+		token, _ := model.CreateToken("Mike", 12345)
+		resp = &pb.LoginResponse{StatusCode: true, User: userResp, Token: token.Token}
 		return
 	}
 

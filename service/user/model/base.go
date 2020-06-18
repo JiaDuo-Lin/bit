@@ -1,9 +1,9 @@
 package model
 
 import (
+	"github.com/Kydaa/bit/service/user/config"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"github.com/Kydaa/bit/service/user/config"
 )
 
 var db *gorm.DB
