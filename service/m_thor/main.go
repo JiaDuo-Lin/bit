@@ -1,10 +1,10 @@
 package main
 
 import (
+	pb "github.com/Kydaa/bit/service/m_thor/proto"
+	"github.com/Kydaa/bit/service/m_thor/server"
 	"google.golang.org/grpc"
 	"log"
-	pb "m_thor/proto"
-	"m_thor/server"
 	"net"
 )
 

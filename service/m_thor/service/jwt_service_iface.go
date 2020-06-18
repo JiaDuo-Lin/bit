@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	pb "m_thor/proto"
+	pb "github.com/Kydaa/bit/service/m_thor/proto"
 )
 
 type IJWTService interface {

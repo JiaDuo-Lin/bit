@@ -2,9 +2,9 @@ package server
 
 import (
 	"context"
+	pb "github.com/Kydaa/bit/service/m_thor/proto"
+	"github.com/Kydaa/bit/service/m_thor/service"
 	"log"
-	pb "m_thor/proto"
-	"m_thor/service"
 )
 
 type JWTServer struct {
@@ -14,7 +14,6 @@ type JWTServer struct {
 func NewJWTServer() *JWTServer {
 	return &JWTServer{jwtService: service.NewJWTService()}
 }
-
 
 func (js *JWTServer) Token(ctx context.Context,
 	req *pb.TokenRequest) (resp *pb.TokenResponse, err error) {
