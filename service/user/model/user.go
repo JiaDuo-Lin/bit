@@ -1,63 +1,65 @@
 package model
 
 import (
-	"encoding/json"
+	"github.com/2bitlab/bit_infra/conn"
+	"github.com/2bitlab/bit_infra/logger"
 	"github.com/pkg/errors"
-	"log"
+	"context"
 )
 
 type User struct {
-	ID   int64
-	Name string
-	Tags []string
+	ID    int64  `gorm:"primary_key"`
+	Name  string `gorm:"type:varchar(100)"`
+	Email string `gorm:"type:varchar(100)"`
+	Tags  []string  `gorm:"many2many:user_tangs";"ForeignKey:UserId"`
 }
 
-func NewUser(id int64, name string, tags []string) *User {
+
+func NewUser(id int64, name, email string, tags []string) *User {
+
 	return &User{
 		ID:   id,
 		Name: name,
+		Email: email,
 		Tags: tags,
 	}
 }
 
-func (user *User) transform() *userInDB {
-	tags, _ := json.Marshal(user.Tags)
-	return &userInDB{
-		ID:   user.ID,
-		Name: user.Name,
-		Tags: string(tags),
-	}
-}
 
 func (user *User) IsRegistered() bool {
-	log.Fatal(!db.NewRecord(user.transform()))
-	return !db.NewRecord(user.transform())
+	return !db.NewRecord(user)
 }
 
 func (user *User) Load() (err error) {
-	userDB := loadById(user.ID)
-	if userDB == nil {
-		err = errors.Wrapf(err, "Can't find the user  in database")
+	userDB, err := loadById(user.ID)
+	if err != nil {
+		logger.TransLogger.Sugar().Errorf("Load has err[%v]", err)
 		return
 	}
-
-	newUser := userDB.transform()
-	user.Name = newUser.Name
-	user.Tags = newUser.Tags
+	if userDB == nil {
+		err = errors.Wrapf(err, "Can't find the user in database")
+		logger.TransLogger.Sugar().Errorf("Load has err[%v]", err)
+		return
+	}
 	return
 }
 
 func (user *User) Add() {
 	if !user.IsRegistered() {
-		user.transform().Add()
+		db.Create(user)
 	}
 }
 
-func (user *User) hasTags() bool {
+func (user *User) hasTags() bool {gi
 	return len(user.Tags) > 0
 }
 
-func loadById(id int64) (newUser *userInDB) {
+func loadById(id int64) (newUser *User, err error) {
+	db, err := conn.MySQLConn(context.Background())
+	if err != nil {
+		logger.TransLogger.Sugar().Errorf("MySQLConn has err[%v]", err)
+		return
+	}
 	db.First(newUser, id)
 	return
 }

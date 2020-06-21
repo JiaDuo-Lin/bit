@@ -18,7 +18,7 @@ func NewUserService() *UserService {
 func (us *UserService) Register(ctx context.Context,
 	req *pb.RegisterRequest) (resp *pb.RegisterResponse, err error) {
 
-	user := model.NewUser(req.User.Id, req.User.Name, req.User.Tags)
+	user := model.NewUser(req.User.Id, req.User.Name, req.User.GetTags())
 	user.Add()
 	resp = &pb.RegisterResponse{StatusCode: true}
 	return
